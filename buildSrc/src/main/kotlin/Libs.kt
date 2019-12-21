@@ -8,6 +8,12 @@ import kotlin.String
  */
 object Libs {
     /**
+     * https://github.com/DanySK/alchemist-engine
+     */
+    const val alchemist_engine: String = "it.unibo.alchemist:alchemist-engine:" +
+            Versions.it_unibo_alchemist
+
+    /**
      * https://github.com/DanySK/alchemist-incarnation-protelis
      */
     const val alchemist_incarnation_protelis: String =
@@ -26,6 +32,12 @@ object Libs {
             Versions.it_unibo_alchemist
 
     /**
+     * https://github.com/DanySK/alchemist-time
+     */
+    const val alchemist_time: String = "it.unibo.alchemist:alchemist-time:" +
+            Versions.it_unibo_alchemist
+
+    /**
      * https://kotlinlang.org/
      */
     const val kotlin_scripting_compiler_embeddable: String =
@@ -38,9 +50,9 @@ object Libs {
     const val kotlin_stdlib_jdk8: String = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:" +
             Versions.org_jetbrains_kotlin
 
-    const val de_fayard_buildsrcversions_gradle_plugin: String =
-            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
-            Versions.de_fayard_buildsrcversions_gradle_plugin
+    const val de_fayard_refreshversions_gradle_plugin: String =
+            "de.fayard.refreshVersions:de.fayard.refreshVersions.gradle.plugin:" +
+            Versions.de_fayard_refreshversions_gradle_plugin
 
     const val org_jetbrains_kotlin_jvm_gradle_plugin: String =
             "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:" +
