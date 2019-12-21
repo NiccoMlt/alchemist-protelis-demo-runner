@@ -1,5 +1,8 @@
+import de.fayard.OrderBy.GROUP_AND_ALPHABETICAL
+
 plugins {
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version Versions.org_jetbrains_kotlin_jvm_gradle_plugin
+    id("de.fayard.refreshVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
 }
 
 group = "org.example"
@@ -11,9 +14,9 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("it.unibo.alchemist:alchemist-incarnation-protelis:9.3.0")
-    implementation("it.unibo.alchemist:alchemist-loading:9.3.0")
-    implementation("it.unibo.alchemist:alchemist-runner:9.3.0")
+    implementation(Libs.alchemist_incarnation_protelis)
+    implementation(Libs.alchemist_loading)
+    implementation(Libs.alchemist_runner)
 }
 
 tasks {
@@ -23,4 +26,8 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
+}
+
+buildSrcVersions {
+    orderBy = GROUP_AND_ALPHABETICAL
 }
