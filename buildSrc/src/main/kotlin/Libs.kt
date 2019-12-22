@@ -8,6 +8,23 @@ import kotlin.String
  */
 object Libs {
     /**
+     * https://github.com/square/moshi
+     */
+    const val moshi: String = "com.squareup.moshi:moshi:" + Versions.com_squareup_moshi
+
+    /**
+     * https://github.com/square/moshi
+     */
+    const val moshi_kotlin: String = "com.squareup.moshi:moshi-kotlin:" +
+            Versions.com_squareup_moshi
+
+    /**
+     * https://github.com/square/moshi
+     */
+    const val moshi_kotlin_codegen: String = "com.squareup.moshi:moshi-kotlin-codegen:" +
+            Versions.com_squareup_moshi
+
+    /**
      * https://github.com/DanySK/alchemist-engine
      */
     const val alchemist_engine: String = "it.unibo.alchemist:alchemist-engine:" +
@@ -40,8 +57,27 @@ object Libs {
     /**
      * https://kotlinlang.org/
      */
+    const val kotlin_annotation_processing_gradle: String =
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_reflect: String = "org.jetbrains.kotlin:kotlin-reflect:" +
+            Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
     const val kotlin_scripting_compiler_embeddable: String =
             "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:" +
+            Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_stdlib: String = "org.jetbrains.kotlin:kotlin-stdlib:" +
             Versions.org_jetbrains_kotlin
 
     /**
@@ -54,7 +90,16 @@ object Libs {
             "de.fayard.refreshVersions:de.fayard.refreshVersions.gradle.plugin:" +
             Versions.de_fayard_refreshversions_gradle_plugin
 
+    /**
+     * https://github.com/uchuhimo/konf
+     */
+    const val konf: String = "com.uchuhimo:konf:" + Versions.konf
+
     const val org_jetbrains_kotlin_jvm_gradle_plugin: String =
             "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:" +
             Versions.org_jetbrains_kotlin_jvm_gradle_plugin
+
+    const val org_jetbrains_kotlin_kapt_gradle_plugin: String =
+            "org.jetbrains.kotlin.kapt:org.jetbrains.kotlin.kapt.gradle.plugin:" +
+            Versions.org_jetbrains_kotlin_kapt_gradle_plugin
 }
