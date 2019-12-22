@@ -1,4 +1,5 @@
 import Main.load
+import it.unibo.alchemist.AlchemistRunner
 import it.unibo.alchemist.core.implementations.Engine
 import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.core.interfaces.Status
@@ -23,18 +24,25 @@ object Main {
 
     fun <T> load(): Simulation<T, Euclidean2DPosition> {
         val loader: Loader = YamlLoader(this.javaClass.classLoader.getResourceAsStream("demo.yml"))
-//        val simBuilder: AlchemistRunner.Builder<*, *> = AlchemistRunner.Builder<T, P>(loader).headless(true)
-//        simBuilder.build().launch()
         val env: Environment<T, Euclidean2DPosition> = loader.getDefault<T, Euclidean2DPosition>()
-        val engine = Engine(env, DoubleTime(simulationTime))
+        val engine: Engine<T, Euclidean2DPosition> = Engine(env, DoubleTime(simulationTime))
 
-        val monitor: JsonOutputMonitor<T, Euclidean2DPosition> = getMonitor(loader.dataExtractors)
+        val extractors: List<Extractor> = loader.dataExtractors
+        // TODO: why extractors variable is an empty list?
+        val monitor: JsonOutputMonitor<T, Euclidean2DPosition> = getMonitor(extractors)
         engine.addOutputMonitor(monitor)
 
         return engine
     }
 
-    fun <T, P : Position2D<P>> getMonitor(extractors: List<Extractor>): JsonOutputMonitor<T, P> {
-        return JsonOutputMonitor<T, P>(printOutput = ::println, sampleSpace = 1.0, extractors = extractors)
+    @Deprecated("I think it's better to use Alchemist Engine directly, to avoid alchemist-runner dependency")
+    fun <T, P : Position2D<P>> loadRunner() {
+        val loader: Loader = YamlLoader(this.javaClass.classLoader.getResourceAsStream("demo.yml"))
+        val simBuilder: AlchemistRunner.Builder<*, *> = AlchemistRunner.Builder<T, P>(loader).headless(true)
+        simBuilder.build().launch()
+    }
+
+    private fun <T, P : Position2D<P>> getMonitor(extractors: List<Extractor>): JsonOutputMonitor<T, P> {
+        return JsonOutputMonitor(printOutput = ::println, sampleSpace = 1.0, extractors = extractors)
     }
 }
