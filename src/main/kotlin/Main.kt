@@ -5,7 +5,11 @@ import it.unibo.alchemist.core.interfaces.Simulation
 import it.unibo.alchemist.core.interfaces.Status
 import it.unibo.alchemist.loader.Loader
 import it.unibo.alchemist.loader.YamlLoader
+import it.unibo.alchemist.loader.export.EnvPerformanceStats
+import it.unibo.alchemist.loader.export.ExecutionTime
 import it.unibo.alchemist.loader.export.Extractor
+import it.unibo.alchemist.loader.export.NumberOfNodes
+import it.unibo.alchemist.loader.export.Time
 import it.unibo.alchemist.model.implementations.positions.Euclidean2DPosition
 import it.unibo.alchemist.model.implementations.times.DoubleTime
 import it.unibo.alchemist.model.interfaces.Environment
@@ -27,8 +31,14 @@ object Main {
         val env: Environment<T, Euclidean2DPosition> = loader.getDefault<T, Euclidean2DPosition>()
         val engine: Engine<T, Euclidean2DPosition> = Engine(env, DoubleTime(simulationTime))
 
-        val extractors: List<Extractor> = loader.dataExtractors
+        val extractors: MutableList<Extractor> = loader.dataExtractors.toMutableList()
         // TODO: why extractors variable is an empty list?
+        extractors += EnvPerformanceStats()
+        extractors += ExecutionTime()
+        // extractors += MeanSquaredError() // todo
+        // extractors += MoleculeReader() // todo
+        extractors += NumberOfNodes()
+        extractors += Time()
         val monitor: JsonOutputMonitor<T, Euclidean2DPosition> = getMonitor(extractors)
         engine.addOutputMonitor(monitor)
 

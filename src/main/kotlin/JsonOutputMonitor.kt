@@ -64,10 +64,10 @@ class JsonOutputMonitor<T, P : Position<P>>(
 
     /** Write environment state on output state object. */
     private fun writeRow(env: Environment<T, P>, r: Reaction<T>, time: Time, step: Long) {
-        val map: Map<String, Double> = extractors
+        val map: MutableMap<String, Double> = extractors
             .flatMap { it.names.zip(it.extractData(env, r, time, step).toTypedArray()) }
             .map { it.first to it.second }
-            .toMap()
+            .toMap().toMutableMap()
         output.steps += map
     }
 
